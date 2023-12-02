@@ -1,0 +1,6 @@
+@use '../../../assets/styles/AppVariables.scss' as base;
+
+.aspire-card {
+    background-color: base.$base-color;
+    height: 250px;
+}

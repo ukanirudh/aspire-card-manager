@@ -1,0 +1,29 @@
+@use './AppVariables.scss' as base;
+
+.flex {
+    display: flex;
+}
+
+.row-center {
+    flex-direction: row;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.aspire-box {
+    background-color: base.$base-color;
+    color: base.$text-base;
+    border-radius: 4px;
+    width: 40px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gap-12 {
+    gap: 12px;
+}
