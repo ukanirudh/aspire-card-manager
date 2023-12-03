@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import CardsManager from './CardsManager/components';
+import AddCard from './CardsManager/components/AddCard';
 import './LandingPage.scss';
 
 const LandingPage = (): ReactElement => {
@@ -14,7 +15,17 @@ const LandingPage = (): ReactElement => {
                     <div className='aspire-box'>&#x24;</div>
                     <Typography variant="h5">3000</Typography>
                 </div>
-                <Button startIcon={<AddCircleRoundedIcon />} variant="contained">New Card</Button>
+                <AddCard
+                    RenderElement={
+                        ({handleClickOpen}) =>
+                            <Button
+                                startIcon={<AddCircleRoundedIcon />}
+                                variant="contained"
+                                onClick={handleClickOpen}>
+                                    New Card
+                                </Button>
+                    }
+                />
             </div>
             <CardsManager />
         </div>

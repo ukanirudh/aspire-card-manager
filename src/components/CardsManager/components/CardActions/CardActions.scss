@@ -1,6 +1,6 @@
 @use '../../../../assets/styles/AppVariables.scss' as base;
 
 .card-actions {
-    background-color: base.$base-secondary;
+    background-color: base.$base-secondary !important;
     height: 100px;
 }
