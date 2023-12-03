@@ -3,11 +3,19 @@ import Carousel from 'react-material-ui-carousel'
 import Card from '../Card';
 import { useAppContext } from '../../../../context/AppContext';
 
-const CardList = (): ReactElement => {
+interface CardListProps {
+    setCurrentCardIndex: (index: number) => void;
+}
+
+const CardList = ({setCurrentCardIndex}: CardListProps): ReactElement => {
     const { userCards } = useAppContext();
 
     return (
-        <Carousel>
+        <Carousel autoPlay={false} changeOnFirstRender onChange={(now) => {
+            if (now !== undefined) {
+                setCurrentCardIndex(now);
+            }
+        }}>
             {
                 userCards.map((cardData) => <Card key={cardData.id} cardData={cardData} />)
             }

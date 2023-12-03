@@ -11,6 +11,7 @@ import CardList from './CardList';
 
 const CardsManager = (): ReactElement => {
     const [curTab] = useState<number>(0);
+    const [cardIndex, setCurrentCardIndex] = useState<number>(0);
     const matches = useLargeScreen();
     const theme = useTheme();
 
@@ -36,8 +37,8 @@ const CardsManager = (): ReactElement => {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={7}>
-                                        <CardList />
-                                        <CardActions />
+                                        <CardList setCurrentCardIndex={setCurrentCardIndex} />
+                                        <CardActions cardIndex={cardIndex} />
                                     </Grid>
                                     <Grid item xs={12} md={5}>
                                         <div>Anirudh</div>

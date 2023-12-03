@@ -13,13 +13,15 @@ interface CardProps {
 }
 
 const Card = ({cardData}: CardProps): ReactElement => {
-    const { number, name, cvv, expiry } = cardData;
+    const { number, name, cvv, expiry, frozen } = cardData;
     const month = new Date(expiry).getMonth();
     const year = new Date(expiry).getFullYear();
 
     const expiryFinal = !isNaN(month) && !isNaN(year) ? `${month+1}/${year.toString().slice(-2)}` : 'Invalid';
     return (
-        <Paper variant="outlined" className='aspire-card'>
+        <Paper variant="outlined" className='aspire-card' sx={{
+            opacity: frozen ? 0.5 : 1
+        }}>
             <Grid container alignSelf='center'>
                 <Grid item xs={12}>
                     <Typography className='font-white' variant="h5" gutterBottom>{name}</Typography>

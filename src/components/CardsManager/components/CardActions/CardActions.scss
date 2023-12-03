@@ -1,6 +1,9 @@
 @use '../../../../assets/styles/AppVariables.scss' as base;
 
 .card-actions {
+    margin-top: 24px;
+    padding: 24px;
     background-color: base.$base-secondary !important;
-    height: 100px;
+    height: 80px;
+    display: flex;
 }

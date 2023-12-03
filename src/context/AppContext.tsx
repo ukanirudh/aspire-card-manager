@@ -36,6 +36,16 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
         case CardsReducerAction.ADD_CARD:
             const newCard = generateNewCard(action.payload.name);
             return {...state, userCards: [...state.userCards, newCard]};
+
+        case CardsReducerAction.FREEZE_CARD:
+            const cardFound = state.userCards[action.payload.cardIndex];
+            if (cardFound) {
+                const copyCard = {...cardFound, frozen: !cardFound.frozen}
+                const updatedUserCards = Object.assign([], state.userCards, { [action.payload.cardIndex]: copyCard });
+                return { ...state, userCards: updatedUserCards };
+            }
+
+            return state;
         default:
             return state;
     }
