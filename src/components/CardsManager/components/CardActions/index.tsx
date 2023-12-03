@@ -12,10 +12,11 @@ import { useAppContext } from '../../../../context/AppContext';
 import { CardsReducerAction } from '../../../../types';
 
 interface CardActionsProps {
+    setCurrentCardIndex: (index: number) => void;
     cardIndex: number;
 }
 
-const CardActions = ({ cardIndex }: CardActionsProps): ReactElement => {
+const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): ReactElement => {
     const { dispatchAction, userCards } = useAppContext();
     const currentCardState = userCards[cardIndex];
 
@@ -26,12 +27,21 @@ const CardActions = ({ cardIndex }: CardActionsProps): ReactElement => {
         })
     }
 
+    const onRemove = () => {
+        dispatchAction({
+            type: CardsReducerAction.REMOVE_CARD,
+            payload: { cardIndex }
+        });
+        // reset to 0th index;
+        setCurrentCardIndex(0);
+    }
+
     return (
         <Paper variant="outlined" className='card-actions'>
             <Grid container columns={15} alignItems='center'>
                 <Grid item container xs direction='column' alignItems='center'>
                     <Grid item>
-                        <FreezeIcon onClick={onFreeze} />
+                        <FreezeIcon className='cursor-pointer' onClick={onFreeze} />
                     </Grid>
                     <Grid item>
                         <Typography variant="body2" gutterBottom>
@@ -75,7 +85,7 @@ const CardActions = ({ cardIndex }: CardActionsProps): ReactElement => {
 
                 <Grid item container xs direction='column' alignItems='center'>
                     <Grid item>
-                        <DeactivateIcon />
+                        <DeactivateIcon className='cursor-pointer' onClick={onRemove} />
                     </Grid>
                     <Grid item>
                         <Typography variant="body2" gutterBottom>

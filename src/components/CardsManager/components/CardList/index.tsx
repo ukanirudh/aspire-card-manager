@@ -5,13 +5,14 @@ import { useAppContext } from '../../../../context/AppContext';
 
 interface CardListProps {
     setCurrentCardIndex: (index: number) => void;
+    cardIndex: number;
 }
 
-const CardList = ({setCurrentCardIndex}: CardListProps): ReactElement => {
+const CardList = ({setCurrentCardIndex, cardIndex}: CardListProps): ReactElement => {
     const { userCards } = useAppContext();
 
     return (
-        <Carousel autoPlay={false} changeOnFirstRender onChange={(now) => {
+        <Carousel index={cardIndex} autoPlay={false} changeOnFirstRender onChange={(now) => {
             if (now !== undefined) {
                 setCurrentCardIndex(now);
             }

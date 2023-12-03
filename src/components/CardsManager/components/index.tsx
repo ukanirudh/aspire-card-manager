@@ -37,8 +37,8 @@ const CardsManager = (): ReactElement => {
                             >
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={7}>
-                                        <CardList setCurrentCardIndex={setCurrentCardIndex} />
-                                        <CardActions cardIndex={cardIndex} />
+                                        <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
+                                        <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                     </Grid>
                                     <Grid item xs={12} md={5}>
                                         <div>Anirudh</div>

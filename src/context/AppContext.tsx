@@ -46,6 +46,16 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
             }
 
             return state;
+        
+        case CardsReducerAction.REMOVE_CARD:
+            console.log("action.payload.cardIndex", action.payload.cardIndex)
+            const cardToBeDeleted = state.userCards[action.payload.cardIndex];
+            if (cardToBeDeleted) {
+               const filteredCards = state.userCards.filter((card, index) => index !== action.payload.cardIndex);
+               return { ...state, userCards: filteredCards };
+            }
+            return state;
+
         default:
             return state;
     }
