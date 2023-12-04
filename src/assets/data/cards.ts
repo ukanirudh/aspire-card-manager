@@ -1,4 +1,4 @@
-import { CardData, CardType } from "../../types";
+import { CardData, CardType, TransactionType } from "../../types";
 
 const cardsData: Array<CardData> = [
     {
@@ -9,7 +9,24 @@ const cardsData: Array<CardData> = [
         cvv: 123,
         frozen: false,
         cardType: CardType.VISA,
-        transactions: []
+        transactions: [
+            {
+                transactionId: 'TID123',
+                transactionDate: '2030-12-30T18:30:00.000Z',
+                thirdPartName: 'Hamleys',
+                comments: 'Refund on Debit card',
+                type: TransactionType.CREDIT,
+                value: 150
+            },
+            {
+                transactionId: 'TID900',
+                transactionDate: '2030-10-30T18:30:00.000Z',
+                thirdPartName: 'Hamleys',
+                comments: 'Debit on Credit card',
+                type: TransactionType.DEBIT,
+                value: 120
+            }
+        ]
     },
     {
         id: 'XID576',
@@ -19,7 +36,16 @@ const cardsData: Array<CardData> = [
         cvv: 123,
         frozen: false,
         cardType: CardType.VISA,
-        transactions: []
+        transactions: [
+            {
+                transactionId: 'TID999',
+                transactionDate: '2030-11-31T18:30:00.000Z',
+                thirdPartName: 'Hamleys',
+                comments: 'Refund on Credit card',
+                type: TransactionType.CREDIT,
+                value: 200
+            }
+        ]
     }
 ]
 

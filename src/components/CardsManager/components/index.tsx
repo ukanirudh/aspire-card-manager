@@ -31,36 +31,35 @@ const CardsManager = (): ReactElement => {
                 curTab === 0 && (
                     <Paper
                         elevation={3}
-                        sx={{
-                            marginTop: matches ? theme.spacing(2) : 0,
-                        }}>
-                            <Box 
-                                sx={{
-                                    margin: matches ? theme.spacing(5) : 0,
-                                }}
-                            >
-                                <Grid container spacing={4}>
-                                    {
-                                        userCards.length > 0 ? (
-                                            <>
-                                                <Grid item xs={12} md={7}>
-                                                    <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
-                                                    <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
-                                                </Grid>
-                                                <Grid item xs={12} md={5}>
-                                                    <CardDetails />
-                                                </Grid>
-                                            </>
-                                        ) : (
-                                            <Grid container item xs={12} justifyContent='center'>
-                                                <Typography variant="h2" gutterBottom>
-                                                    No Cards
-                                                </Typography>
+                        sx={{ marginTop: theme.spacing(2)}}
+                    >
+                        <Box 
+                            sx={{
+                                margin: matches ? theme.spacing(5) : theme.spacing(2),
+                            }}
+                        >
+                            <Grid container spacing={4}>
+                                {
+                                    userCards.length > 0 ? (
+                                        <>
+                                            <Grid item xs={12} md={7}>
+                                                <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
+                                                <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                             </Grid>
-                                        )
-                                    }
-                                </Grid>
-                            </Box>
+                                            <Grid item xs={12} md={5}>
+                                                <CardDetails cardIndex={cardIndex} />
+                                            </Grid>
+                                        </>
+                                    ) : (
+                                        <Grid container item xs={12} justifyContent='center'>
+                                            <Typography variant="h2" gutterBottom>
+                                                No Cards
+                                            </Typography>
+                                        </Grid>
+                                    )
+                                }
+                            </Grid>
+                        </Box>
                     </Paper>
                 )
             }

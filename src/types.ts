@@ -13,7 +13,8 @@ export interface Transactions {
     thirdPartName: string;
     type: TransactionType;
     transactionDate: string;
-    destination: string;
+    comments: string;
+    value: number;
 }
 
 export interface CardData {

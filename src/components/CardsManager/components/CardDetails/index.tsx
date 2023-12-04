@@ -9,9 +9,13 @@ import { ReactComponent as TransactionSummaryIcon } from '../../../../assets/ico
 import './CardDetails.scss'
 import RecentTransactions from './RecentTransactions';
 
-const CardDetails = (): ReactElement => {
+interface CardDetailsProps {
+    cardIndex: number;
+}
+
+const CardDetails = ({ cardIndex }: CardDetailsProps): ReactElement => {
     return (
-        <div>
+        <>
             <Accordion>
                 <AccordionSummary
                     className='accordion-header'
@@ -24,7 +28,7 @@ const CardDetails = (): ReactElement => {
                 </AccordionSummary>
                 <AccordionDetails></AccordionDetails>
             </Accordion>
-            <Accordion>
+            <Accordion expanded>
                 <AccordionSummary
                     className='accordion-header'
                     expandIcon={<ExpandCircleDownIcon className='accordion-icon' />}
@@ -35,10 +39,10 @@ const CardDetails = (): ReactElement => {
                     </div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <RecentTransactions />
+                    <RecentTransactions cardIndex={cardIndex} />
                 </AccordionDetails>
             </Accordion>
-        </div>
+        </>
     )
 }
 

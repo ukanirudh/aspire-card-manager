@@ -2,7 +2,18 @@
 
 .aspire-card {
     display: flex;
+    flex-direction: column;
     background-color: base.$base-color !important;
     height: 250px;
     padding: 24px;
+
+    .card-logo {
+        display: flex;
+        align-self: flex-end;
+        > svg {
+            .logo {
+                fill: white;
+            }
+        }
+    }
 }

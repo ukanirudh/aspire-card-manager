@@ -1,3 +1,5 @@
+@use '../../../../assets/styles/AppVariables.scss' as base;
+
 .accordion-header {
     background-color: #F5F9FF !important;
     color: #0C365A !important;
@@ -11,4 +13,16 @@
 
 .accordion-icon {
     color: #d9e0f4;
+}
+
+.recent-transactions-list {
+    .transaction-data-item {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+    }
+
+    .credit-item {
+        color: base.$base-color;
+    }
 }

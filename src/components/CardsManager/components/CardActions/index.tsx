@@ -10,6 +10,7 @@ import { ReactComponent as SetLimitIcon } from '../../../../assets/icons/Setspen
 import Typography from '@mui/material/Typography';
 import { useAppContext } from '../../../../context/AppContext';
 import { CardsReducerAction } from '../../../../types';
+import RemoveCard from './RemoveCard';
 
 interface CardActionsProps {
     setCurrentCardIndex: (index: number) => void;
@@ -85,7 +86,12 @@ const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): Reac
 
                 <Grid item container xs direction='column' alignItems='center'>
                     <Grid item>
-                        <DeactivateIcon className='cursor-pointer' onClick={onRemove} />
+                        <RemoveCard
+                            RenderElement={({handleClickOpen}) =>
+                                <DeactivateIcon className='cursor-pointer' onClick={handleClickOpen} />
+                            }
+                            submitAction={onRemove}
+                        />
                     </Grid>
                     <Grid item>
                         <Typography variant="body2" gutterBottom>

@@ -50,8 +50,8 @@ const AddCard = ({ RenderElement }: AddCardProps): ReactElement => {
                 />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleSubmit}>Add Card</Button>
+                    <Button color="error" onClick={handleClose}>Cancel</Button>
+                    <Button variant="contained" onClick={handleSubmit}>Add Card</Button>
                 </DialogActions>
             </Dialog>
         </>

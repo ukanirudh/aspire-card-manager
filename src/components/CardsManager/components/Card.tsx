@@ -4,6 +4,7 @@ import './Card.scss'
 import { CardData } from '../../../types';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { ReactComponent as AspireLogo } from '../../../assets/icons/AspireLogo.svg';
 
 //show card num
 //logo
@@ -22,7 +23,10 @@ const Card = ({cardData}: CardProps): ReactElement => {
         <Paper variant="outlined" className='aspire-card' sx={{
             opacity: frozen ? 0.5 : 1
         }}>
-            <Grid container alignSelf='center'>
+            <div className='card-logo'>
+                <AspireLogo />
+            </div>
+            <Grid container xs alignSelf='center'>
                 <Grid item xs={12}>
                     <Typography className='font-white' variant="h5" gutterBottom>{name}</Typography>
                 </Grid>
