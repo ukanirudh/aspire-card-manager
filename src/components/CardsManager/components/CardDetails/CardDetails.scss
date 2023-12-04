@@ -1,0 +1,14 @@
+.accordion-header {
+    background-color: #F5F9FF !important;
+    color: #0C365A !important;
+    .header-content {
+        display: flex;
+        > svg {
+            margin-right: 16px;
+        }
+    }
+}
+
+.accordion-icon {
+    color: #d9e0f4;
+}

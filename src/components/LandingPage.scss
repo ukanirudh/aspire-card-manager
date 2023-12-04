@@ -1,5 +1,19 @@
+@use '../assets/styles/AppVariables.scss' as base;
 @import '../assets/styles/Common.scss';
 
 .landing-toolpanel {
     justify-content: space-between;
+}
+
+.desktop-nav {
+    color: base.$text-base;
+
+    .nav-list-item {
+        color: base.$text-base;
+    }
+}
+
+.nav-text {
+    margin-bottom: 100px;
+    color: base.$text-base;
 }
