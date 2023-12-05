@@ -47,3 +47,9 @@
 .dummy-container {
     min-height: 32px;
 }
+
+.mobile-view {
+    &.App {
+        background-color: base.$mobile-base;
+    }
+}

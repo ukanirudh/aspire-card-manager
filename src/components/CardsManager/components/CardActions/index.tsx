@@ -12,13 +12,8 @@ import { useAppContext } from '../../../../context/AppContext';
 import { CardsReducerAction } from '../../../../types';
 import RemoveCard from './RemoveCard';
 
-interface CardActionsProps {
-    setCurrentCardIndex: (index: number) => void;
-    cardIndex: number;
-}
-
-const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): ReactElement => {
-    const { dispatchAction, userCards } = useAppContext();
+const CardActions = (): ReactElement => {
+    const { dispatchAction, userCards, cardIndex } = useAppContext();
     const currentCardState = userCards[cardIndex];
 
     const onFreeze = () => {
@@ -33,8 +28,6 @@ const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): Reac
             type: CardsReducerAction.REMOVE_CARD,
             payload: { cardIndex }
         });
-        // reset to 0th index;
-        setCurrentCardIndex(0);
     }
 
     return (

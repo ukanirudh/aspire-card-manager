@@ -10,28 +10,29 @@ import cardsData from '../assets/data/cards';
 import { CardData, CardsAction, CardsReducerAction } from '../types';
 import { generateNewCard } from '../utils/generateRandom';
 
-
-
 interface AppContextProps {
     children: ReactNode;
 }
 
-interface AppContextProviderValue {
+interface AppContextState {
     userCards: Array<CardData>;
+    cardIndex: number;
+}
+
+interface AppContextProviderValue extends AppContextState {
     dispatchAction: Dispatch<CardsAction>;
 }
 
-
-
 const AppContext = createContext<AppContextProviderValue>({
     userCards: [],
+    cardIndex: 0,
     dispatchAction: () => {} 
 });
 
 export const useAppContext = (): AppContextProviderValue =>
   useContext(AppContext);
 
-const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => {
+const reducer = (state: AppContextState, action: CardsAction) => {
     switch (action.type) {
         case CardsReducerAction.ADD_CARD:
             const newCard = generateNewCard(action.payload.name);
@@ -50,7 +51,7 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
             const cardToBeDeleted = state.userCards[action.payload.cardIndex];
             if (cardToBeDeleted) {
                const filteredCards = state.userCards.filter((card, index) => index !== action.payload.cardIndex);
-               return { ...state, userCards: filteredCards };
+               return { ...state, userCards: filteredCards, cardIndex: 0 };
             }
             return state;
 
@@ -64,7 +65,7 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
             return state;
 
         case CardsReducerAction.SET_CARD_INDEX:
-            return state;
+            return { ...state, cardIndex: action.payload.cardIndex };
 
         default:
             return state;
@@ -72,11 +73,12 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
 };
 
 const AppContextProvider = ({children}: AppContextProps): ReactElement => {
-    const [appState, dispatch] = useReducer(reducer, { userCards: cardsData });
+    const [appState, dispatch] = useReducer(reducer, { userCards: cardsData, cardIndex: 0 });
 
     return (
         <AppContext.Provider value={{
             userCards: appState.userCards,
+            cardIndex: appState.cardIndex,
             dispatchAction: dispatch
         }}>
             {children}

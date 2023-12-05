@@ -2,19 +2,18 @@ import React, { ReactElement } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import Card from '../Card';
 import { useAppContext } from '../../../../context/AppContext';
+import { CardsReducerAction } from '../../../../types';
 
-interface CardListProps {
-    setCurrentCardIndex: (index: number) => void;
-    cardIndex: number;
-}
-
-const CardList = ({setCurrentCardIndex, cardIndex}: CardListProps): ReactElement => {
-    const { userCards } = useAppContext();
+const CardList = (): ReactElement => {
+    const { userCards, cardIndex, dispatchAction } = useAppContext();
 
     return (
         <Carousel index={cardIndex} autoPlay={false} changeOnFirstRender onChange={(now) => {
             if (now !== undefined) {
-                setCurrentCardIndex(now);
+                dispatchAction({
+                    type: CardsReducerAction.SET_CARD_INDEX,
+                    payload: { cardIndex: now }
+                })
             }
         }}>
             {

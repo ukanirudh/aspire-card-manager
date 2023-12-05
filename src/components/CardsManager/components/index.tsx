@@ -17,8 +17,7 @@ import { CardsReducerAction } from '../../../types';
 
 const CardsManager = (): ReactElement => {
     const [curTab] = useState<number>(0);
-    const { userCards, dispatchAction } = useAppContext();
-    const [cardIndex, setCurrentCardIndex] = useState<number>(0);
+    const { userCards, cardIndex, dispatchAction } = useAppContext();
     const matches = useLargeScreen();
     const theme = useTheme();
 
@@ -60,11 +59,11 @@ const CardsManager = (): ReactElement => {
                                                             variant="text"
                                                             startIcon={<VisibilityIcon />}
                                                         >
-                                                            Show card number
+                                                            {userCards[cardIndex].showNumber ? 'Hide' : 'Show' } card number
                                                         </Button>
                                                     </div>
-                                                <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
-                                                <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
+                                                <CardList />
+                                                <CardActions />
                                             </Grid>
                                             <Grid item container direction='column' xs={12} md={12} lg={5}>
                                                 { matches &&  <div className='dummy-container'></div> }

@@ -20,18 +20,18 @@ const LandingPage = (): ReactElement => {
                 className='flex column'
                 sx={{flexGrow: 1, padding: largeSc ? '40px' : '24px'}}
             >
-                <Typography variant="body2" gutterBottom>Available balance</Typography>
+                <Typography variant="body2" gutterBottom className={`${!largeSc && 'font-white'}`}>Available balance</Typography>
                 <div className='flex row-center landing-toolpanel'>
                     <div className='flex row-center gap-12'>
                         <div className='aspire-box'>&#x24;</div>
-                        <Typography variant="h5">3000</Typography>
+                        <Typography variant="h5" className={`${!largeSc && 'font-white'}`}>3000</Typography>
                     </div>
                     <AddCard
                         RenderElement={
                             ({handleClickOpen}) =>
                                 <Button
                                     startIcon={<AddCircleRoundedIcon />}
-                                    variant="contained"
+                                    variant={ largeSc ? 'contained' : 'text'}
                                     onClick={handleClickOpen}>
                                         New Card
                                     </Button>
