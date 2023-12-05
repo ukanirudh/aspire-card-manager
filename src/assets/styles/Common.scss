@@ -2,6 +2,10 @@
 
 .flex {
     display: flex;
+
+    &.justtify-end {
+        justify-content: flex-end;
+    }
 }
 
 .row-center {
@@ -37,5 +41,9 @@
 }
 
 .color-base {
-    color: base.$base-color;
+    color: base.$base-color !important;
+}
+
+.dummy-container {
+    min-height: 32px;
 }

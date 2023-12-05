@@ -11,6 +11,8 @@ import CardList from './CardList';
 import CardDetails from './CardDetails';
 import Typography from '@mui/material/Typography';
 import { useAppContext } from '../../../context/AppContext';
+import Button from '@mui/material/Button';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const CardsManager = (): ReactElement => {
     const [curTab] = useState<number>(0);
@@ -42,11 +44,17 @@ const CardsManager = (): ReactElement => {
                                 {
                                     userCards.length > 0 ? (
                                         <>
-                                            <Grid item xs={12} md={12} lg={7}>
+                                            <Grid item container direction='column' xs={12} md={12} lg={7}>
+                                                    <div className='flex justtify-end'>
+                                                        <Button classes={{text: 'color-base'}} variant="text" startIcon={<VisibilityIcon />}>
+                                                            Show card number
+                                                        </Button>
+                                                    </div>
                                                 <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                                 <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                             </Grid>
-                                            <Grid item xs={12} md={12} lg={5}>
+                                            <Grid item container direction='column' xs={12} md={12} lg={5}>
+                                                { matches &&  <div className='dummy-container'></div> }
                                                 <CardDetails cardIndex={cardIndex} />
                                             </Grid>
                                         </>

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Paper from '@mui/material/Paper';
-import './Card.scss'
+import '../styles/Card.scss'
 import { CardData } from '../../../types';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';

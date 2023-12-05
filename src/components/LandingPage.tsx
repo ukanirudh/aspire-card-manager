@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import CardsManager from './CardsManager/components';
 import AddCard from './CardsManager/components/AddCard';
-import './LandingPage.scss';
+import './styles/LandingPage.scss';
 import DesktopNav from './DesktopNav';
 import Box from '@mui/material/Box';
 import useLargeScreen from '../hooks/useLargeScreen';

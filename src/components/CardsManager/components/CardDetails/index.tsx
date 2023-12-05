@@ -16,7 +16,7 @@ interface CardDetailsProps {
 const CardDetails = ({ cardIndex }: CardDetailsProps): ReactElement => {
     return (
         <>
-            <Accordion>
+            <Accordion defaultExpanded>
                 <AccordionSummary
                     className='accordion-header'
                     expandIcon={<ExpandCircleDownIcon className='accordion-icon' />}
