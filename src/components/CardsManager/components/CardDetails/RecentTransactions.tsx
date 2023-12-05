@@ -24,8 +24,8 @@ const RecentTransactions = ({ cardIndex }: RecentTransactionsProps): ReactElemen
                     const { transactionId, transactionDate, thirdPartName, comments, type, value } = tarnsaction;
                     const isCredit = type === TransactionType.CREDIT;
                     return (
-                        <>
-                            <ListItem key={transactionId} alignItems="flex-start">
+                        <div key={transactionId}>
+                            <ListItem alignItems="flex-start">
                                 <ListItemAvatar>
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                                 </ListItemAvatar>
@@ -51,7 +51,7 @@ const RecentTransactions = ({ cardIndex }: RecentTransactionsProps): ReactElemen
                                 </div>
                             </ListItem>
                             <Divider variant="inset" component="li" />
-                        </>
+                        </div>
                     )
                 })
             }

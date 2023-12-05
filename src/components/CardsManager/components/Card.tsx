@@ -5,16 +5,15 @@ import { CardData } from '../../../types';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { ReactComponent as AspireLogo } from '../../../assets/icons/AspireLogo.svg';
-
-//show card num
-//logo
+import { ReactComponent as VisaLogo } from '../../../assets/icons/Visa_Logo.svg';
+import StarIcon from '@mui/icons-material/Star';
 
 interface CardProps {
     cardData: CardData;
 }
 
 const Card = ({cardData}: CardProps): ReactElement => {
-    const { number, name, cvv, expiry, frozen } = cardData;
+    const { number, name,  expiry, frozen } = cardData;
     const month = new Date(expiry).getMonth();
     const year = new Date(expiry).getFullYear();
 
@@ -30,22 +29,38 @@ const Card = ({cardData}: CardProps): ReactElement => {
                 <Grid item xs={12}>
                     <Typography className='font-white' variant="h5" gutterBottom>{name}</Typography>
                 </Grid>
-                <Grid item xs={12}>
-                    <Typography className='font-white' variant="body2">{number}</Typography>
+                <Grid container xs={10}>
+                {
+                    number.match(/.{1,4}/g)?.map((splitNumber) => {
+                        return (
+                            <Grid item xs key={splitNumber}>
+                                <Typography className='font-white card-font' variant="h6">{splitNumber}</Typography>
+                            </Grid>
+                        )
+                    })
+                }
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
-                        <Typography className='font-white' variant="caption">
+                        <Typography className='font-white' variant="h6">
                             Thru: {expiryFinal}
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography className='font-white' variant="caption">
-                            CVV: {cvv}
-                        </Typography>
+                        <div className='font-white flex row-center'>
+                            <Typography variant="h6">
+                                CVV:
+                            </Typography>
+                            <div>
+                                <StarIcon /><StarIcon /><StarIcon />
+                            </div>
+                        </div>
                     </Grid>
                 </Grid>
             </Grid>
+            <div className='card-logo'>
+                <VisaLogo />
+            </div>
         </Paper>
     )
 }

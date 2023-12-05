@@ -28,7 +28,7 @@ const CardDetails = ({ cardIndex }: CardDetailsProps): ReactElement => {
                 </AccordionSummary>
                 <AccordionDetails></AccordionDetails>
             </Accordion>
-            <Accordion expanded>
+            <Accordion defaultExpanded>
                 <AccordionSummary
                     className='accordion-header'
                     expandIcon={<ExpandCircleDownIcon className='accordion-icon' />}

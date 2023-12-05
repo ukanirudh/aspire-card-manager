@@ -8,6 +8,10 @@
 .desktop-nav {
     color: base.$text-base;
 
+    .logo-item {
+        margin-top: 24px;
+    }
+
     .nav-list-item {
         color: base.$text-base;
     }
@@ -15,5 +19,5 @@
 
 .nav-text {
     margin-bottom: 100px;
-    color: base.$text-base;
+    color: #55738b !important;
 }

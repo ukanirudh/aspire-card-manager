@@ -6,6 +6,11 @@
     background-color: base.$base-color !important;
     height: 250px;
     padding: 24px;
+    border-radius: 12px !important;
+
+    .card-font {
+        letter-spacing: 0.5em;
+    }
 
     .card-logo {
         display: flex;

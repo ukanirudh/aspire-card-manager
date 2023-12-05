@@ -42,11 +42,11 @@ const CardsManager = (): ReactElement => {
                                 {
                                     userCards.length > 0 ? (
                                         <>
-                                            <Grid item xs={12} md={7}>
+                                            <Grid item xs={12} md={12} lg={7}>
                                                 <CardList cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                                 <CardActions cardIndex={cardIndex} setCurrentCardIndex={setCurrentCardIndex} />
                                             </Grid>
-                                            <Grid item xs={12} md={5}>
+                                            <Grid item xs={12} md={12} lg={5}>
                                                 <CardDetails cardIndex={cardIndex} />
                                             </Grid>
                                         </>

@@ -40,51 +40,51 @@ const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): Reac
     return (
         <Paper variant="outlined" className='card-actions'>
             <Grid container columns={15} alignItems='center'>
-                <Grid item container xs direction='column' alignItems='center'>
+                <Grid item container xs direction='column' alignItems='center' wrap="nowrap">
                     <Grid item>
                         <FreezeIcon className='cursor-pointer' onClick={onFreeze} />
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2" gutterBottom>
+                    <Grid item xs zeroMinWidth>
+                        <Typography variant="body2" gutterBottom noWrap>
                             {currentCardState.frozen ? 'UnFreeze Card' : 'Freeze card'}
                         </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid item container xs direction='column' alignItems='center'>
+                <Grid item container xs direction='column' alignItems='center' wrap="nowrap">
                     <Grid item>
                         <SetLimitIcon />
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2" gutterBottom>
+                    <Grid item xs zeroMinWidth>
+                        <Typography variant="body2" gutterBottom noWrap>
                             Set spend limit
                         </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid item container xs direction='column' alignItems='center'>
+                <Grid item container xs direction='column' alignItems='center' wrap="nowrap">
                     <Grid item>
                         <GpayIcon />
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2" gutterBottom>
+                    <Grid item xs zeroMinWidth>
+                        <Typography variant="body2" gutterBottom noWrap>
                             Add to GPay
                         </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid item container xs direction='column' alignItems='center'>
+                <Grid item container xs direction='column' alignItems='center' wrap="nowrap">
                     <Grid item>
                         <ReplaceIcon />
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2" gutterBottom>
+                    <Grid item xs zeroMinWidth>
+                        <Typography variant="body2" gutterBottom noWrap>
                             Replace card
                         </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid item container xs direction='column' alignItems='center'>
+                <Grid item container xs direction='column' alignItems='center' wrap="nowrap">
                     <Grid item>
                         <RemoveCard
                             RenderElement={({handleClickOpen}) =>
@@ -93,8 +93,8 @@ const CardActions = ({ setCurrentCardIndex, cardIndex }: CardActionsProps): Reac
                             submitAction={onRemove}
                         />
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2" gutterBottom>
+                    <Grid item xs zeroMinWidth>
+                        <Typography variant="body2" gutterBottom noWrap>
                             Cancel card
                         </Typography>
                     </Grid>

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useRef } from 'react'
+import React, { ReactElement, useState, useRef, ChangeEvent } from 'react'
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -15,6 +15,7 @@ interface AddCardProps {
 const AddCard = ({ RenderElement }: AddCardProps): ReactElement => {
     const { dispatchAction } = useAppContext();
     const [open, setOpen] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<boolean>(false);
     const nameRef = useRef<HTMLInputElement>(null);
 
     const handleClickOpen = () => {
@@ -23,14 +24,25 @@ const AddCard = ({ RenderElement }: AddCardProps): ReactElement => {
   
     const handleClose = () => {
       setOpen(false);
+      setHasError(false);
     };
 
     const handleSubmit = () => {
-        dispatchAction({
-            type: CardsReducerAction.ADD_CARD,
-            payload: { name: nameRef.current?.value }
-        })
-        setOpen(false);
+        if(!hasError) {
+            dispatchAction({
+                type: CardsReducerAction.ADD_CARD,
+                payload: { name: nameRef.current?.value }
+            })
+            setOpen(false);
+        }
+    }
+
+    const onValidationHandle = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        if(!e.target.value) {
+            setHasError(true);
+        } else {
+            setHasError(false);
+        }
     }
 
     return (
@@ -40,6 +52,8 @@ const AddCard = ({ RenderElement }: AddCardProps): ReactElement => {
                 <DialogTitle>Add New Card</DialogTitle>
                 <DialogContent>
                 <TextField
+                    required
+                    onChange={onValidationHandle}
                     inputRef={nameRef}
                     autoFocus
                     id="name"
@@ -47,6 +61,9 @@ const AddCard = ({ RenderElement }: AddCardProps): ReactElement => {
                     type="text"
                     fullWidth
                     variant="standard"
+                    error={hasError}
+                    helperText={hasError ? 'Invalid input' : ''}
+                    onBlur={onValidationHandle}
                 />
                 </DialogContent>
                 <DialogActions>

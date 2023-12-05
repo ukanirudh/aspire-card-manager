@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 
 const useLargeScreen = (): boolean => {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
     return matches;
 }
 

@@ -8,7 +8,7 @@ import List from '@mui/material/List';
 import { ReactComponent as AspireLogo } from '../assets/icons/AspireLogo.svg';
 import { NavItemsList } from '../constants/NavItems';
 
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 const DesktopNav = (): ReactElement => {
     return (
@@ -16,7 +16,7 @@ const DesktopNav = (): ReactElement => {
             className='desktop-nav'
             sx={{
                 width: drawerWidth,
-                display: { xs: 'none', md: 'block' },
+                display: { sm: 'none', md: 'block' },
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     backgroundColor: '#0C365A',
@@ -29,11 +29,15 @@ const DesktopNav = (): ReactElement => {
             >
             
             <List>
-                <ListItem key='aspire-logo'>
-                    <AspireLogo  />
+                <ListItem className='logo-item' key='aspire-logo'>
+                    <ListItemButton disableRipple>
+                        <AspireLogo  />
+                    </ListItemButton>
                 </ListItem>
                 <ListItem className='nav-text' key='text-secondary'>
-                    <ListItemText secondary="Trusted way of banking for 3,000+ SMEs and startups in Singapore" />
+                    <ListItemButton disableRipple>
+                        <ListItemText classes={{secondary: 'nav-text'}} secondary="Trusted way of banking for 3,000+ SMEs and startups in Singapore" />
+                    </ListItemButton>
                 </ListItem>
                 {NavItemsList.map(({Icon, label}, index) => (
                     <ListItem key={label}>
