@@ -44,16 +44,26 @@ const reducer = (state: { userCards: Array<CardData> }, action: CardsAction) => 
                 const updatedUserCards = Object.assign([], state.userCards, { [action.payload.cardIndex]: copyCard });
                 return { ...state, userCards: updatedUserCards };
             }
-
             return state;
         
         case CardsReducerAction.REMOVE_CARD:
-            console.log("action.payload.cardIndex", action.payload.cardIndex)
             const cardToBeDeleted = state.userCards[action.payload.cardIndex];
             if (cardToBeDeleted) {
                const filteredCards = state.userCards.filter((card, index) => index !== action.payload.cardIndex);
                return { ...state, userCards: filteredCards };
             }
+            return state;
+
+        case CardsReducerAction.TOGGLE_CARD_NUMBER_DISPLAY:
+            const cardMatch = state.userCards[action.payload.cardIndex];
+            if (cardMatch) {
+                const copyCard = {...cardMatch, showNumber: !!!cardMatch.showNumber}
+                const updatedUserCards = Object.assign([], state.userCards, { [action.payload.cardIndex]: copyCard });
+                return { ...state, userCards: updatedUserCards };
+            }
+            return state;
+
+        case CardsReducerAction.SET_CARD_INDEX:
             return state;
 
         default:

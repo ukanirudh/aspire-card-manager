@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useState, useCallback } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -13,13 +13,21 @@ import Typography from '@mui/material/Typography';
 import { useAppContext } from '../../../context/AppContext';
 import Button from '@mui/material/Button';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { CardsReducerAction } from '../../../types';
 
 const CardsManager = (): ReactElement => {
     const [curTab] = useState<number>(0);
-    const { userCards } = useAppContext();
+    const { userCards, dispatchAction } = useAppContext();
     const [cardIndex, setCurrentCardIndex] = useState<number>(0);
     const matches = useLargeScreen();
     const theme = useTheme();
+
+    const onShowToggle = useCallback(() => {
+        dispatchAction({
+            type: CardsReducerAction.TOGGLE_CARD_NUMBER_DISPLAY,
+            payload: { cardIndex }
+        });
+    }, [cardIndex])
 
     return (
         <>
@@ -46,7 +54,12 @@ const CardsManager = (): ReactElement => {
                                         <>
                                             <Grid item container direction='column' xs={12} md={12} lg={7}>
                                                     <div className='flex justtify-end'>
-                                                        <Button classes={{text: 'color-base'}} variant="text" startIcon={<VisibilityIcon />}>
+                                                        <Button
+                                                            onClick={onShowToggle}
+                                                            classes={{text: 'color-base'}}
+                                                            variant="text"
+                                                            startIcon={<VisibilityIcon />}
+                                                        >
                                                             Show card number
                                                         </Button>
                                                     </div>

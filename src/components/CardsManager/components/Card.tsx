@@ -13,11 +13,13 @@ interface CardProps {
 }
 
 const Card = ({cardData}: CardProps): ReactElement => {
-    const { number, name,  expiry, frozen } = cardData;
+    const { number, name,  expiry, frozen, showNumber } = cardData;
     const month = new Date(expiry).getMonth();
     const year = new Date(expiry).getFullYear();
 
     const expiryFinal = !isNaN(month) && !isNaN(year) ? `${month+1}/${year.toString().slice(-2)}` : 'Invalid';
+    const numberSplitMatch = number.match(/.{1,4}/g);
+
     return (
         <Paper variant="outlined" className='aspire-card' sx={{
             opacity: frozen ? 0.5 : 1
@@ -31,10 +33,16 @@ const Card = ({cardData}: CardProps): ReactElement => {
                 </Grid>
                 <Grid container xs={10}>
                 {
-                    number.match(/.{1,4}/g)?.map((splitNumber) => {
+                    numberSplitMatch?.map((splitNumber, index) => {
+                        let cardSplitMask: Array<string> | string = splitNumber;
+                        if (!showNumber) {
+                            cardSplitMask = splitNumber.split('').fill('\u2022');
+                        }
                         return (
                             <Grid item xs key={splitNumber}>
-                                <Typography className='font-white card-font' variant="h6">{splitNumber}</Typography>
+                                <Typography className='font-white card-font' variant="h6">
+                                    { index === (numberSplitMatch?.length-1) ? splitNumber : cardSplitMask }
+                                </Typography>
                             </Grid>
                         )
                     })

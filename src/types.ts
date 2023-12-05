@@ -24,6 +24,7 @@ export interface CardData {
     expiry: string;
     cvv: number;
     frozen: boolean;
+    showNumber?: boolean;
     cardType: CardType;
     transactions: Array<Transactions>
 }
@@ -32,7 +33,9 @@ export interface CardData {
 export enum CardsReducerAction {
     ADD_CARD = 'ADD_CARD',
     FREEZE_CARD = 'FREEZE_CARD',
-    REMOVE_CARD = 'REMOVE_CARD'
+    REMOVE_CARD = 'REMOVE_CARD',
+    TOGGLE_CARD_NUMBER_DISPLAY = 'TOGGLE_CARD_NUMBER_DISPLAY',
+    SET_CARD_INDEX = 'SET_CARD_INDEX'
 }
 
 export interface CardsAction {
